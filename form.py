@@ -32,6 +32,7 @@ def salvar(nome, idade):
     st.success("Deu certo")
 
 def visualizar():
+    conn = sqlite3.connect('form.db', check_same_thread=False)
     query = "SELECT * FROM Teste"
     df = pd.read_sql_query(query, conn)
     return df
