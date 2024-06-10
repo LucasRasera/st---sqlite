@@ -1,5 +1,6 @@
 import streamlit as st
 import sqlite3
+import pandas as pd
 
 conn = sqlite3.connect('form.db', check_same_thread=False)
 cursor = conn.cursor()
@@ -30,4 +31,10 @@ def salvar(nome, idade):
     conn.close()
     st.success("Deu certo")
 
+def visualizar():
+    query = "SELECT * FROM Teste"
+    df = pd.read_sql_query(query, conn)
+    return df
+
 criar_formulario()
+st.dataframe(visualizar())
