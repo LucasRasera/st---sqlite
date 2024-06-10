@@ -2,9 +2,6 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
-conn = sqlite3.connect('form.db', check_same_thread=False)
-cursor = conn.cursor()
-
 st.write("Teste do role com sqlite")
 
 def criar_formulario():
@@ -17,6 +14,8 @@ def criar_formulario():
             salvar(nome, idade) 
 
 def salvar(nome, idade):
+    conn = sqlite3.connect('form.db', check_same_thread=False)
+    cursor = conn.cursor()
     cursor.execute(
         """
             CREATE TABLE IF NOT EXISTS  Teste (
