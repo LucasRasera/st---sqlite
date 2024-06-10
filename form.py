@@ -28,7 +28,7 @@ def salvar(nome, idade):
 
     cursor.execute("INSERT INTO Teste VALUES (?, ?)", (nome, idade))
     conn.commit()
-    #conn.close()
+    conn.close()
     st.success("Deu certo")
 
 def visualizar():
